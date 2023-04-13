@@ -59,7 +59,8 @@ public class BeerServiceImpl implements BeerService {
 
     @Override
     public Beer getBearById(UUID id) {
-        return beerMap.get( id );
+        log.error("Beer Data : " + beerMap.get(id));
+        return beerMap.get(id);
     }
 
     @Override
@@ -77,5 +78,21 @@ public class BeerServiceImpl implements BeerService {
         catch( Exception err ){
            return null;
         }
+    }
+
+    @Override
+    public void updateBeerById(UUID id, Beer beer) {
+        Beer beerFound = beerMap.get(id);
+        // Update the beer!
+        beerFound.setBeerName(beer.getBeerName());
+        beerFound.setUpdatedDate(beer.getUpdatedDate());
+        beerFound.setPrice(beer.getPrice());
+        beerFound.setQuantityOnHand(beer.getQuantityOnHand( ));
+        beerMap.put(beer.getId(), beerFound);
+    }
+
+    @Override
+    public void removeBeerById(UUID id) {
+        beerMap.remove(id);
     }
 }

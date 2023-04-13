@@ -8,6 +8,7 @@ class SpringMvcRestApiApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println("Test case has been updated!");
     }
 
 }
